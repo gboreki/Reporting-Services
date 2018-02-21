@@ -194,6 +194,11 @@ In the rsreportserver.config file add following under ```<UI>```
 </UI>
 ``` 
 
+# Troubleshooting
+
+ - **Symptom: After setting up you get a 500 error with NullReference exception.**
+ - Cause: Ensure the config files are writable to the account running the service. The permissions might change if the files are copied from a different install location. After restarting the service the machineKey entries will be copied from RsReportServer.Config to web.config, rsportal.exe.config, rspowerbi.exe.config. When this happens you should see the following error in the RSHostingService_xxx.log related to the file with the different permissions:
+2018-02-21 15:46:07.0949|ERROR|5|Error syncing configurationSystem.UnauthorizedAccessException: Access to the path 'C:\Program Files\Microsoft Power BI Report Server\PBIRS\ReportServer\web.config' is denied.
 
 # Code Of Conduct
 This project has adopted the [Microsoft Open Source Code of
